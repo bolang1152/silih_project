@@ -38,7 +38,7 @@ class BarangController extends Controller
 
         Barang::create($data);
 
-        return redirect()->route('barang.index')
+        return redirect()->route('admin.barang.index')
             ->with('success', 'Barang berhasil ditambahkan');
     }
 
@@ -77,7 +77,7 @@ class BarangController extends Controller
 
         $barang->update($data);
 
-        return redirect()->route('barang.index')
+        return redirect()->route('admin.barang.index')
             ->with('success', 'Barang berhasil diupdate');
     }
 
@@ -92,7 +92,7 @@ class BarangController extends Controller
 
         $barang->delete();
 
-        return redirect()->route('barang.index')
+        return redirect()->route('admin.barang.index')
             ->with('success', 'Barang berhasil dihapus');
     }
 }

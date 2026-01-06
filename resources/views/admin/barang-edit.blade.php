@@ -5,7 +5,7 @@
     <h3>Edit Barang</h3>
 
     <form method="POST"
-          action="{{ route('barang.update', $barang->id) }}"
+          action="{{ route('admin.barang.update', $barang->id) }}"
           enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -65,7 +65,7 @@
         @endif
 
         <button class="btn btn-primary">Update</button>
-        <a href="{{ route('barang.index') }}" class="btn btn-secondary">Kembali</a>
+        <a href="{{ route('admin.barang.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

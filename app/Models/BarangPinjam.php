@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Barangpinjam extends Model
+class BarangPinjam extends Model
 {
     use HasFactory;
 

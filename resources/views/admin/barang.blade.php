@@ -13,7 +13,7 @@
         <div class="card-header">Tambah Barang</div>
         <div class="card-body">
             <form method="POST"
-                action="{{ route('barang.store') }}"
+                action="{{ route('admin.barang.store') }}"
                 enctype="multipart/form-data">
                 @csrf
 
@@ -73,13 +73,13 @@
                 <td>{{ $b->jumlah_barang }}</td>
                 <td>{{ $b->status_barang }}</td>
                 <td>
-                    <a href="{{ route('barang.edit', $b->id) }}"
+                    <a href="{{ route('admin.barang.edit', $b->id) }}"
                         class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
                     <form method="POST"
-                        action="{{ route('barang.destroy', $b->id) }}"
+                        action="{{ route('admin.barang.destroy', $b->id) }}"
                         class="d-inline"
                         onsubmit="return confirm('Yakin hapus barang ini?')">
                         @csrf
