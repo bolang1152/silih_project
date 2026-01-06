@@ -10,7 +10,7 @@
 <div class="d-flex">
     @include('user.layouts.sidebar')
 
-    <div class="flex-grow-1">
+    <div class="flex-1">
         @include('user.layouts.navbar')
 
         <main class="p-4 bg-light" style="min-height: 100vh">

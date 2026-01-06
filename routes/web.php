@@ -9,6 +9,20 @@ use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\User\PeminjamanController;
 use App\Http\Controllers\User\BarangController as BarangUserController;
 
+Route::get('/', function () {
+    return view('landing.home');
+})->name('home');
+
+Route::get('/kontak', function () {
+    return view('landing.kontak');
+})->name('kontak');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/dashboard', function () {
+        return view('user.dashboard');
+    })->name('user.dashboard');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/peminjaman/alat/barang', [BarangUserController::class, 'index'])
         ->name('user.barang.index');
@@ -49,16 +63,29 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/loans/{id}/status', [LoanController::class, 'updateStatus'])->name('loans.updateStatus');
         Route::put('/loans/{id}/verify', [LoanController::class, 'verify'])->name('loans.verify');
         Route::put('/loans/{loan}', [LoanController::class, 'update'])->name('admin.loans.update');
+        Route::get('/loans/{loan}', [LoanController::class, 'show'])->name('loans.show');
+
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
 
+// Route::prefix('admin')->middleware(['auth'])->group(function () {
+
+//     Route::get('/loans/{loan}', 
+//         [App\Http\Controllers\Admin\LoanController::class, 'show']
+//     )->name('admin.loans.show');
+
+//     Route::put('/loans/{loan}/verify',
+//         [App\Http\Controllers\Admin\LoanController::class, 'verify']
+//     )->name('admin.loans.verify');
+
+// });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');

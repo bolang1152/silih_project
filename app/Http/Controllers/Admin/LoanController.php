@@ -35,18 +35,22 @@ class LoanController extends Controller
     {
         $request->validate([
             'status_pinjam' => 'required|in:disetujui,ditolak',
-            'tanggal_pengembalian' => 'nullable|date|after_or_equal:tanggal_pinjam',
+            'tanggal_pengembalian' => 'nullable|date'
         ]);
 
-        $loan = Barangpinjam::findOrFail($id);
-        $loan->status_pinjam = $request->status_pinjam;
+        $loan = Loan::findOrFail($id);
+        $loan->update([
+            'status_pinjam' => $request->status_pinjam,
+            'tanggal_pengembalian' => $request->tanggal_pengembalian
+        ]);
 
-        if ($request->filled('tanggal_pengembalian')) {
-            $loan->tanggal_pengembalian = $request->tanggal_pengembalian;
-        }
-
-        $loan->save();
-
-        return back()->with('success', 'Status peminjaman diperbarui');
+        return redirect()
+            ->route('admin.loans.show', $loan->id)
+            ->with('success', 'Peminjaman berhasil diverifikasi');
+    }
+    
+    public function show(Barangpinjam $loan)
+    {
+        return view('admin.loans.show', compact('loan'));
     }
 }

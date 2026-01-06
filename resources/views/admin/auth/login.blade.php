@@ -1,21 +1,37 @@
-<h2>Login Admin - WEB SILIH</h2>
+<!-- <x-guest-layout> -->
+    <!-- Session Status -->
+    <!-- <x-auth-session-status class="mb-4" :status="session('status')" /> -->
 
-<form method="POST" action="/admin/login">
-    @csrf
+    <!-- <form method="POST" action="{{ route('login') }}"> -->
+        <!-- @csrf -->
 
-    <div>
-        <label>Email</label>
-        <input type="email" name="email">
-    </div>
+        <h2>Login Admin - WEB SILIH</h2>
 
-    <div>
-        <label>Password</label>
-        <input type="password" name="password">
-    </div>
+        <form method="POST" action="/admin/login">
+            @csrf
 
-    <button type="submit">Login</button>
-</form>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
 
-@if ($errors->any())
-    <p style="color:red">{{ $errors->first() }}</p>
-@endif
+            <div>
+                <label>Password</label>
+                <input type="password" name="password">
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        @if ($errors->any())
+            <p style="color:red">{{ $errors->first() }}</p>
+        @endif
+
+        
+            <!-- <x-primary-button class="ms-3">
+                {{ __('Log in') }}
+            </x-primary-button> -->
+        </div>
+    <!-- </form>
+</x-guest-layout> -->
+

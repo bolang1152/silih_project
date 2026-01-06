@@ -8,7 +8,6 @@
 <body class="bg-gray-100">
 
     <div class="flex min-h-screen">
-        {{-- Sidebar --}}
         @include('admin.layouts.sidebar')
 
         {{-- Content --}}
